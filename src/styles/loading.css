@@ -1,0 +1,39 @@
+.loading {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000000ca;
+    z-index: 9999;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading .weather {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    animation: identifier 1.5s linear infinite;
+}
+
+@keyframes identifier {
+    25% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    .loading .weather {
+        width: 100px;
+        height: 100px;
+    }
+}
