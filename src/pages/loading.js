@@ -6,15 +6,12 @@ import { useRouter } from "next/router";
 import { setUserPhoto } from "@/firebase/auth";
 
 export default function Loading() {
-
   const route = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
-      setUserPhoto();
-      if (route.asPath === "/loading") {
-        route.push("/");
-      }
+      // setUserPhoto();
+      route.asPath === "/loading" && route.push("/");
     }, 5000);
   }, []);
 
