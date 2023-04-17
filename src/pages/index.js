@@ -8,10 +8,7 @@ import { Card } from "@/components/Card";
 import { ListCities } from "@/components/ListCities";
 import Link from "next/link";
 import bg from "../assets/bg.jpg";
-import {
-  loadedUser,
-  logout,
-} from "@/firebase/auth";
+import { loadedUser, logout } from "@/firebase/auth";
 import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
 
@@ -124,7 +121,7 @@ export default function Home() {
             <div className="user-container" onClick={handleLogout}>
               <Link href={user === null ? "/login" : "/"}>
                 <h1>{user === null ? "Login" : user?.displayName}</h1>
-                {user === null ? (
+                {user?.photoURL === null || user?.photoURL === undefined ? (
                   <FaRegUserCircle className="user-icon" />
                 ) : (
                   <Image

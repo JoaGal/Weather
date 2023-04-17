@@ -10,7 +10,7 @@ export default function Loading() {
 
   useEffect(() => {
     setTimeout(() => {
-      // setUserPhoto();
+      setUserPhoto();
       route.asPath === "/loading" && route.push("/");
     }, 5000);
   }, []);
