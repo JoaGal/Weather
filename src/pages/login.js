@@ -8,7 +8,7 @@ import { DataInputs } from "@/components/DataInputs";
 import { signin } from "@/firebase/auth";
 import { useRouter } from "next/router";
 
-export default function login() {
+export default function Login() {
   const {loggedIn, setLoggedIn, setDataUser, dataUser} = useUserContext();
   const { inputslogin } = DataInputs();
   const router = useRouter();
