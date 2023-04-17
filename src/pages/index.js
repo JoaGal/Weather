@@ -88,7 +88,8 @@ export default function Home() {
   //     router.push("/login");
   //   }
   // };
-
+  
+  console.log(user)
   return (
     <>
       <Head>
@@ -121,10 +122,10 @@ export default function Home() {
             <div className="user-container" onClick={handleLogout}>
               <Link href={user === null ? "/login" : "/"}>
                 <h1>{user === null ? "Login" : user?.displayName}</h1>
-                {user?.photoURL === null || user?.photoURL === undefined ? (
+                {user === null ? (
                   <FaRegUserCircle className="user-icon" />
                 ) : (
-                  <Image
+                  user?.photoURL !== null && <Image
                     className="user-img"
                     alt="user"
                     src={user?.photoURL}
