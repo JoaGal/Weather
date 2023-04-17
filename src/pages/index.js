@@ -88,8 +88,6 @@ export default function Home() {
   //     router.push("/login");
   //   }
   // };
-  
-  console.log(user)
   return (
     <>
       <Head>
