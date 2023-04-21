@@ -98,6 +98,7 @@ export default function Home() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <main>
+        <Image src={bg} alt="bg" className="bg" />
         <div className="container">
           <div className="current-info">
             <div className="date-container">
@@ -122,13 +123,15 @@ export default function Home() {
                 {user === null ? (
                   <FaRegUserCircle className="user-icon" />
                 ) : (
-                  user?.photoURL !== null && <Image
-                    className="user-img"
-                    alt="user"
-                    src={user?.photoURL}
-                    width={800}
-                    height={800}
-                  />
+                  user?.photoURL !== null && (
+                    <Image
+                      className="user-img"
+                      alt="user"
+                      src={user?.photoURL}
+                      width={800}
+                      height={800}
+                    />
+                  )
                 )}
               </Link>
             </div>

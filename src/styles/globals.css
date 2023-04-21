@@ -9,11 +9,7 @@
 body {
   overflow: hidden;
   font-family: "Poppins", sans-serif;
-  background-image: url('../assets/bg.jpg');
-  background-position: 100% 60%; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh; 
+  background-color: #eee;
 }
 
 .bg {
