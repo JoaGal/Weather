@@ -98,7 +98,7 @@ export default function Home() {
         <link rel="icon" href="/Logo.ico" />
       </Head>
       <main>
-        <Image src={bg} alt="bg" className="bg" />
+        
         <div className="container">
           <div className="current-info">
             <div className="date-container">
