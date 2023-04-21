@@ -27,7 +27,6 @@ export default function Login() {
   }
   return (
     <div className="form">
-      <Image src={bg} alt="bg" className="bg" />
       <Link href="./" className="back login">
         <TiArrowBack />
       </Link>
