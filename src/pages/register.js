@@ -52,6 +52,7 @@ export default function Register() {
 
   return (
     <div className="form">
+      <Image src={bg} alt="bg" className="bg" />
       <Link href="./" className="back register">
         <TiArrowBack />
       </Link>

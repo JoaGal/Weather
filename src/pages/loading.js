@@ -18,8 +18,11 @@ export default function Loading() {
   }, []);
 
   return (
+    <>
+      <Image src={bg} alt="bg" className="bg" />
       <div className="loading">
         <Image src={weather} alt="weather" className="weather" />
       </div>
+    </>
   );
 }
