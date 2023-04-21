@@ -10,6 +10,9 @@ body {
   overflow: hidden;
   font-family: "Poppins", sans-serif;
   background-color: #eee;
+}
+
+body{
   background-image: url('../assets/bg.jpg');
   background-position: 100% 65%; 
   background-size: cover;
