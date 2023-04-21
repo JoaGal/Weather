@@ -90,7 +90,7 @@ export default function Home() {
   // };
   return (
       <main>
-        
+        <Image src={bg} alt="bg" className="bg" />
         <div className="container">
           <div className="current-info">
             <div className="date-container">

@@ -6,15 +6,10 @@
   padding: 0;
 }
 
-html {
+body {
   overflow: hidden;
   font-family: "Poppins", sans-serif;
   background-color: #eee;
-  background-image: url('../assets/bg.jpg');
-  background-position: 100% 65%; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
 }
 
 .bg {
