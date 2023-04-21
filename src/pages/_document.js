@@ -10,7 +10,7 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <body className='bgs'>
+      <body>
         <Main />
         <NextScript />
       </body>

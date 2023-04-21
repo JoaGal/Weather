@@ -89,7 +89,6 @@ export default function Home() {
   //   }
   // };
   return (
-    <>
       <main>
         <div className="container">
           <div className="current-info">
@@ -151,6 +150,5 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </>
   );
 }
