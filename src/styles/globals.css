@@ -12,7 +12,7 @@ body {
   background-color: #eee;
 }
 
-body{
+.bgs{
   background-image: url('../assets/bg.jpg');
   background-position: 100% 65%; 
   background-size: cover;
