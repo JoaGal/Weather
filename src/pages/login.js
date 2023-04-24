@@ -5,11 +5,12 @@ import bg from "../assets/bg.jpg";
 import Image from "next/image";
 import { useUserContext } from "@/context/context";
 import { DataInputs } from "@/components/DataInputs";
-import { signin } from "@/firebase/auth";
+import { signin, verifyUser } from "@/firebase/auth";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Login() {
-  const {loggedIn, setLoggedIn, setDataUser, dataUser} = useUserContext();
+  const { setDataUser, dataUser} = useUserContext();
   const { inputslogin } = DataInputs();
   const router = useRouter();
 
@@ -17,14 +18,16 @@ export default function Login() {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    verifyUser(router)
+  }, [])
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    signin(dataUser.email, dataUser.password, setLoggedIn);
+    signin(dataUser.email, dataUser.password, router.push("/"));
   };
 
-  if (loggedIn) {
-    router.push("/");
-  }
   return (
     <div className="form">
       <Image src={bg} alt="bg" className="bg" />

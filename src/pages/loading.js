@@ -3,18 +3,19 @@ import weather from "../assets/weather.png";
 import bg from "../assets/bg.jpg";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { setUserPhoto } from "@/firebase/auth";
+import { setUserPhoto, verifyUser } from "@/firebase/auth";
 
 export default function Loading() {
-  const route = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
       setUserPhoto();
       setTimeout(() => {
-      route.asPath === "/loading" && route.push("/");
+      router.asPath === "/loading" && router.push("/");
       }, 1500);
     }, 4000);
+      verifyUser(router)
   }, []);
 
   return (

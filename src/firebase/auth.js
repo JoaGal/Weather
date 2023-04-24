@@ -23,23 +23,23 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 
 
-export const signup = async (email, password, setLoggedIn, userName, image) => {
+export const signup = async (email, password, userName, image, redirec) => {
   try {
     const user = await createUserWithEmailAndPassword(auth, email, password);
     uploadImage(user.user, image);
-    setLoggedIn(true);
     await updateProfile(user.user, {
       displayName: userName,
     });
+    redirec
   } catch (error) {
     alert("Complete all fields or email already exists")
   }
 };
 
-export const signin = async (email, password, setLoggedIn) => {
+export const signin = async (email, password, redirec) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    setLoggedIn(true);
+    redirec
   } catch (error) {
     alert("Email or password incorrect")
   }
@@ -59,6 +59,14 @@ export const loadedUser = (setUser) => {
       setUser(user);
     }
   });
+};
+
+export const verifyUser = (router) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push("/")
+      }
+    });
 };
 
 // Storage

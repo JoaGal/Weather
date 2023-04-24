@@ -14,10 +14,8 @@ export const UserContextProvider = ({ children }) => {
     confirmPassword: "",
   });
 
-  const [loggedIn, setLoggedIn] = useState(false);
-
   return (
-    <UserContext.Provider value={{user, setUser, loggedIn, setLoggedIn, dataUser, setDataUser}}>
+    <UserContext.Provider value={{user, setUser, dataUser, setDataUser}}>
       {children}
     </UserContext.Provider>
   );
