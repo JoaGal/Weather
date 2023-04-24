@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes, uploadString } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
@@ -71,10 +71,23 @@ export const verifyUser = (router) => {
 
 // Storage
 
-// export const uploadCities = async (user, cities) => {
-//   const storageRef = ref(storage, `cities/${user?.uid}`);
-//   uploadBytes(storageRef, cities);
-// };
+export const uploadCities = async (user, cords) => {
+  if (user !== null) {
+    const storageRef = ref(storage, `cities/${user?.uid}`);
+    uploadString(storageRef, cords);
+  }
+};
+
+// export const loadedCities = ()=>{
+//   onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//       const storageRef = ref(storage, `cities/${user?.uid}`);
+//       const cords = getDownloadURL(storageRef); 
+//       console.log(cords)
+//       return cords
+//     }
+//   });
+// }
 
 const uploadImage = async (user, image) => {
   const storageRef = ref(storage, `images/${user?.uid}`);

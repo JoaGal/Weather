@@ -14,6 +14,7 @@ export const Card = ({
   temp_max,
   speed,
   pressure,
+  saveWeather,
 }) => {
   return (
     <div className="card-container">
@@ -53,7 +54,7 @@ export const Card = ({
             </li>
           </ul>
         </div>
-        <button>+</button>
+        <button onClick={saveWeather}>+</button>
       </div>
     </div>
   );

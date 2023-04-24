@@ -7,7 +7,7 @@ import { Card } from "@/components/Card";
 import { ListCities } from "@/components/ListCities";
 import Link from "next/link";
 import bg from "../assets/bg.jpg";
-import { loadedUser, logout } from "@/firebase/auth";
+import { loadedCities, loadedUser, logout, uploadCities } from "@/firebase/auth";
 import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
 
@@ -79,13 +79,15 @@ export default function Home() {
     }
   };
 
-  // const saveWeather = () => {
-  //   if (user !== null) {
-  //     uploadCities(user, city);
-  //   }else{
-  //     router.push("/login");
-  //   }
-  // };
+
+  const saveWeather = () => {
+    if (user !== null) {
+      uploadCities(user, cords);
+    }else{
+      router.push("/login");
+    }
+  };
+
   return (
       <main>
         <Image src={bg} alt="bg" className="bg" />
@@ -139,6 +141,7 @@ export default function Home() {
               temp_max={weather.temp_max.toFixed()}
               speed={weather.speed.toFixed()}
               pressure={weather.pressure}
+              saveWeather={saveWeather}
             />
           )}
         </div>
