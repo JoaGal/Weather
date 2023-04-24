@@ -5,9 +5,8 @@ import bg from "../assets/bg.jpg";
 import Image from "next/image";
 import { useUserContext } from "@/context/context";
 import { DataInputs } from "@/components/DataInputs";
-import { signin, verifyUser } from "@/firebase/auth";
+import { signin } from "@/firebase/auth";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export default function Login() {
   const { setDataUser, dataUser} = useUserContext();
@@ -17,11 +16,6 @@ export default function Login() {
   const onChange = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };
-
-  useEffect(() => {
-    verifyUser(router)
-  }, [])
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();

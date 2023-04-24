@@ -3,7 +3,7 @@ import weather from "../assets/weather.png";
 import bg from "../assets/bg.jpg";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { setUserPhoto, verifyUser } from "@/firebase/auth";
+import { setUserPhoto } from "@/firebase/auth";
 
 export default function Loading() {
   const router = useRouter();
@@ -15,7 +15,6 @@ export default function Loading() {
       router.asPath === "/loading" && router.push("/");
       }, 1500);
     }, 4000);
-      verifyUser(router)
   }, []);
 
   return (

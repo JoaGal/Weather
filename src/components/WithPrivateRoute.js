@@ -1,16 +1,12 @@
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { verifyUser } from "@/firebase/auth";
 
 const WithPrivateRoute = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    onAuthStateChanged((user) => {
-      if (user) {
-        router.push('/');
-      }
-    });
+    verifyUser(router);
   }, []);
 
   return <>{children}</>;

@@ -37,8 +37,6 @@ export default function Home() {
     }
   };
 
-  console.log(process.env.NEXT_PUBLIC_API_KEY_WEATHER)
-
   useEffect(() => {
     callCities();
   }, [city]);

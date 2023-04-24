@@ -4,12 +4,11 @@ import { TiArrowBack } from "react-icons/ti";
 import { AiFillCamera } from "react-icons/ai";
 import bg from "../assets/bg.jpg";
 import Image from "next/image";
-import { signup, verifyUser } from "../firebase/auth";
+import { signup } from "../firebase/auth";
 import "firebase/auth";
 import { useRouter } from "next/router";
 import { useUserContext } from "@/context/context";
 import { DataInputs } from "@/components/DataInputs";
-import { useEffect } from "react";
 
 export default function Register() {
   const router = useRouter();
@@ -38,10 +37,6 @@ export default function Register() {
       );
     }
   };
-
-  useEffect(() => {
-    verifyUser(router)
-  }, [])
 
   const saveImage = (e) => {
     if (e.target.files[0]?.type.includes("image/")) {
