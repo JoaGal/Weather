@@ -1,5 +1,4 @@
 import { getFormattedWeatherData } from "../hooks/weatherService";
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { IoIosAddCircle } from "react-icons/io";
@@ -13,7 +12,6 @@ import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
 
 export default function Home() {
-  const apiKey = "6bf11c60285b9b4e9ef3802f78058417";
   const [city, setCity] = useState("");
   const [cords, setCords] = useState("");
   const [weather, setWeather] = useState([]);
@@ -29,7 +27,7 @@ export default function Home() {
     try {
       if (city.length > 2) {
         const res = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
+          `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const data = await res.json();
         setWeather(data);
@@ -38,6 +36,8 @@ export default function Home() {
       console.log(error);
     }
   };
+
+  console.log(process.env.NEXT_PUBLIC_API_KEY_WEATHER)
 
   useEffect(() => {
     callCities();
