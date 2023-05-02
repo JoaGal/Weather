@@ -7,8 +7,8 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadString } from "firebase/storage";
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
