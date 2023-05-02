@@ -8,6 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes, uploadString } from "firebase/storage";
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
@@ -21,6 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+const db = getFirestore(app);
 
 
 export const signup = async (email, password, userName, image, redirec) => {
@@ -39,7 +41,6 @@ export const signup = async (email, password, userName, image, redirec) => {
 export const signin = async (email, password, redirec) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    redirec
   } catch (error) {
     alert("Email or password incorrect")
   }
@@ -53,10 +54,11 @@ export const logout = async () => {
   }
 };
 
-export const loadedUser = (setUser) => {
+export const loadedUser = (setUser, setCordSave) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
+      loadedCities(user.uid, setCordSave)
     }
   });
 };
@@ -71,23 +73,25 @@ export const verifyUser = (router) => {
 
 // Storage
 
-export const uploadCities = async (user, cords) => {
-  if (user !== null) {
-    const storageRef = ref(storage, `cities/${user?.uid}`);
-    uploadString(storageRef, cords);
-  }
-};
+export const uploadCities = async (user, cords, setCordSave) => {
+ try{
+   await setDoc(doc(db, "cities", `${user?.uid}`), {
+    cords
+  });
+  setCordSave(cords)
+  }catch(error){
+    console.log(error)
+ }
+}
 
-// export const loadedCities = ()=>{
-//   onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//       const storageRef = ref(storage, `cities/${user?.uid}`);
-//       const cords = getDownloadURL(storageRef); 
-//       console.log(cords)
-//       return cords
-//     }
-//   });
-// }
+ const loadedCities = async (id, setCordSave)=>{
+  const querySnapshot = await getDoc(doc(db, "cities", id));
+  if (querySnapshot.exists()) {
+    setCordSave(querySnapshot.data().cords)
+  } else {
+    console.log("No such document!");
+  }
+}
 
 const uploadImage = async (user, image) => {
   const storageRef = ref(storage, `images/${user?.uid}`);
