@@ -132,7 +132,7 @@ export default function Home() {
           <div
             className="today"
             id="current-temp"
-            onClick={() => weatherService(cords, setWeather)}
+            onClick={() => weatherService(cordSave, setWeather)}
           >
             <GiModernCity className="icon__add" />
           </div>
