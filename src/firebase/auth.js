@@ -58,7 +58,7 @@ export const loadedUser = (setUser, setCordSave) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
-      loadedCities(user.uid, setCordSave)
+      // loadedCities(user.uid, setCordSave)
     }
   });
 };
