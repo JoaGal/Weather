@@ -35,12 +35,8 @@ export default function Home() {
     cords !== "" && weatherService(cords, setWeather);
   }, [cords]);
 
-  const handleSelect = (item) => {
-    setCords(`lat=${item.lat}&lon=${item.lon}`);
-  };
-
-  // Hour and day
-  useEffect(() => {
+   // Hour and day
+   useEffect(() => {
     let today = new Date();
     let hoursReal = today.toLocaleTimeString("en-US");
     let days = today.toLocaleString("en-US", {
@@ -53,6 +49,10 @@ export default function Home() {
       loadedUser(setUser, setCordSave);
     }
   }, []);
+
+  const handleSelect = (item) => {
+    setCords(`lat=${item.lat}&lon=${item.lon}`);
+  };
 
   const handleLogout = () => {
     if (user !== null) {
