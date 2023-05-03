@@ -140,7 +140,6 @@ export default function Home() {
           <div
             className="today"
             id="current-temp"
-            onClick={() => router.push("/login")}
           >
             <IoIosAddCircle className="icon__add" />
           </div>
