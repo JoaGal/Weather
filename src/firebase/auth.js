@@ -58,7 +58,7 @@ export const loadedUser = (setUser, setCordSave) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
-      // loadedCities(user.uid, setCordSave)
+      loadedCities(user.uid, setCordSave)
     }
   });
 };
@@ -84,7 +84,7 @@ export const uploadCities = async (user, cords, setCordSave) => {
  }
 }
 
- export const loadedCities = async (id, setCordSave)=>{
+ const loadedCities = async (id, setCordSave)=>{
   const querySnapshot = await getDoc(doc(db, "cities", id));
   if (querySnapshot.exists()) {
     setCordSave(querySnapshot.data().cords)
