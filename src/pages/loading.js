@@ -13,7 +13,7 @@ export default function Loading() {
       setUserPhoto();
       setTimeout(() => {
       router.asPath === "/loading" && router.push("/");
-      }, 1500);
+      }, 3000);
     }, 4000);
   }, []);
 
