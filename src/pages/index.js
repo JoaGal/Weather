@@ -61,13 +61,13 @@ export default function Home() {
     }
   };
 
-  const saveWeather = () => {
-    if (user !== null) {
-      uploadCities(user, cords, setCordSave);
-    } else {
-      router.push("/login");
-    }
-  };
+  // const saveWeather = () => {
+  //   if (user !== null) {
+  //     uploadCities(user, cords, setCordSave);
+  //   } else {
+  //     router.push("/login");
+  //   }
+  // };
 
   return (
     <main>
@@ -128,7 +128,7 @@ export default function Home() {
       </div>
 
       <div className="saved-weathers">
-        {cordSave !== "" ? (
+        {/* {cordSave !== "" ? (
           <div
             className="today"
             id="current-temp"
@@ -136,14 +136,14 @@ export default function Home() {
           >
             <GiModernCity className="icon__add" />
           </div>
-        ) : (
+        ) : ( */}
           <div
             className="today"
             id="current-temp"
           >
             <IoIosAddCircle className="icon__add" />
           </div>
-        )}
+        {/* )} */}
       </div>
     </main>
   );
