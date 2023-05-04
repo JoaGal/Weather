@@ -11,7 +11,7 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
+  apiKey: "AIzaSyAObuYHNF9jL1S9NygPTzww9d-WOQSTmqY",
   authDomain: process.env.NEXT_PUBLIC_AUTH,
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_BUCKET,
