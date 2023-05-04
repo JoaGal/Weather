@@ -11,18 +11,12 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  // apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
-  // authDomain: process.env.NEXT_PUBLIC_AUTH,
-  // projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  // storageBucket: process.env.NEXT_PUBLIC_BUCKET,
-  // messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-  // appId: process.env.NEXT_PUBLIC_ID,
-  apiKey: "AIzaSyAObuYHNF9jL1S9NygPTzww9d-WOQSTmqY",
-  authDomain: "weatherapp-8760e.firebaseapp.com",
-  projectId: "weatherapp-8760e",
-  storageBucket: "weatherapp-8760e.appspot.com",
-  messagingSenderId: "574630408499",
-  appId: "1:574630408499:web:29181fe9e2ed046de0ce46"
+  apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
+  authDomain: process.env.NEXT_PUBLIC_AUTH,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_ID,
 };
 
 const app = initializeApp(firebaseConfig);
