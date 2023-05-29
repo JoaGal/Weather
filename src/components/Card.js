@@ -2,6 +2,7 @@ import { BiHappy } from "react-icons/bi";
 import { FaWind } from "react-icons/fa";
 import { MdCompress, MdOutlineWaterDrop } from "react-icons/md";
 import { BsArrowDownShort, BsArrowUpShort } from "react-icons/bs";
+import 'animate.css';
 
 export const Card = ({
   name,
@@ -16,10 +17,11 @@ export const Card = ({
   pressure,
   saveWeather,
 }) => {
+  const completeName = `${name}, ${country}`;
   return (
     <div className="card-container">
-      <div className="card-weather">
-        <h2>{`${name}, ${country}`}</h2>
+      <div className="card-weather animate__animated animate__zoomIn">
+        <h2>{completeName.slice(0,19) + `${completeName.length >= 19 ?  "..." : ""}`}</h2>
         <div className="temp">
           <img src={iconURL} alt="weatherIcon" />
           <h1>{temp}°C</h1>
