@@ -1,4 +1,4 @@
-import { useWeatherService } from "../hooks/useWeatherService";
+import { useWeatherService} from "../hooks/useWeatherService";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoIosAddCircle } from "react-icons/io";
@@ -23,7 +23,7 @@ export default function Home() {
     days: "",
   });
   const router = useRouter();
-  const { user, setUser } = useUserContext();
+  const { user, setUser } = useUserContext(); 
 
   //get cities
   const onQueryChange = (e) => {
@@ -32,9 +32,10 @@ export default function Home() {
   };
 
   //get weather data
-  useEffect(() => {
-    cords !== "" && useWeatherService(cords, setWeather);
-  }, [cords]);
+  useWeatherService(cords, setWeather);
+  // useEffect(() => {
+  //   cords !== "" && weatherService(cords, setWeather);
+  // }, [cords]);
 
   // Hour and day
   useEffect(() => {

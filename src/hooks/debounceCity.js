@@ -1,9 +1,9 @@
-import { useCitiesService } from "./useCitiesService";
+import { citiesService } from "./citiesService";
 
 function debounceCity(value, setWeather, city) {
   if (city.current) clearTimeout(city.current);
   city.current = setTimeout(() => {
-    value.length > 2 && useCitiesService(value, setWeather);
+    value.length > 2 && citiesService(value, setWeather);
   }, 1000);
 }
 
