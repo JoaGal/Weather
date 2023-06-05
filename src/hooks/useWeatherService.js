@@ -35,5 +35,8 @@ export function useWeatherService() {
       console.log(error);
     }
   };
-  return { weatherService };
+
+  useEffect(() => {
+    cords !== "" && weatherService(cords, setWeather);
+  }, [cords]);
 }

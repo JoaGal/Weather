@@ -24,7 +24,6 @@ export default function Home() {
   });
   const router = useRouter();
   const { user, setUser } = useUserContext();
-  const { weatherService } = useWeatherService();
   const { citiesService } = useCitiesService();
 
   //get cities
@@ -37,9 +36,7 @@ export default function Home() {
   };
 
   //get weather data
-  useEffect(() => {
-    cords !== "" && weatherService(cords, setWeather);
-  }, [cords]);
+  useWeatherService()
 
   // Hour and day
   useEffect(() => {
