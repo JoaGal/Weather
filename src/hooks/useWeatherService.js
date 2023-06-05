@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const makeIconURL = (iconId) =>
   `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 
-const useWeatherService = (cords, setWeather) => {
+export function useWeatherService(cords, setWeather) {
   const weatherService = async () => {
     const keyURL = "6bf11c60285b9b4e9ef3802f78058417";
     try {
@@ -40,5 +40,3 @@ const useWeatherService = (cords, setWeather) => {
     cords !== "" && weatherService(cords, setWeather);
   }, [cords]);
 }
-
-export default useWeatherService;

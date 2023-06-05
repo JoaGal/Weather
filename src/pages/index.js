@@ -10,9 +10,8 @@ import bg from "../assets/bg.jpg";
 import { loadedUser, logout, uploadCities } from "@/firebase/auth";
 import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
-import useCitiesService from "@/hooks/useCitiesService";
-import useWeatherService from "@/hooks/useWeatherService";
-
+import { useCitiesService } from "@/hooks/useCitiesService";
+import { useWeatherService } from "@/hooks/useWeatherService";
 
 export default function Home() {
   const city = useRef("");
@@ -24,7 +23,7 @@ export default function Home() {
     days: "",
   });
   const router = useRouter();
-  const { user, setUser } = useUserContext(); 
+  const { user, setUser } = useUserContext();
 
   //get cities
   const onQueryChange = (e) => {
