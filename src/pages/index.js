@@ -1,4 +1,3 @@
-import { useWeatherService} from "../hooks/useWeatherService";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoIosAddCircle } from "react-icons/io";
@@ -11,7 +10,9 @@ import bg from "../assets/bg.jpg";
 import { loadedUser, logout, uploadCities } from "@/firebase/auth";
 import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
-import debounceCity from "@/hooks/debounceCity";
+import useCitiesService from "@/hooks/useCitiesService";
+import useWeatherService from "@/hooks/useWeatherService";
+
 
 export default function Home() {
   const city = useRef("");
@@ -28,7 +29,10 @@ export default function Home() {
   //get cities
   const onQueryChange = (e) => {
     const { value } = e.target;
-    debounceCity(value, setWeather, city);
+    if (city.current) clearTimeout(city.current);
+    city.current = setTimeout(() => {
+      value.length > 2 && useCitiesService(value, setWeather);
+    }, 1000);
   };
 
   //get weather data
