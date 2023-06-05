@@ -11,7 +11,7 @@ import bg from "../assets/bg.jpg";
 import { loadedUser, logout, uploadCities } from "@/firebase/auth";
 import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
-import useDebounceCity from "@/hooks/useDebounceCity";
+import debounceCity from "@/hooks/debounceCity";
 
 export default function Home() {
   const city = useRef("");
@@ -28,7 +28,7 @@ export default function Home() {
   //get cities
   const onQueryChange = (e) => {
     const { value } = e.target;
-    useDebounceCity(value, setWeather, city);
+    debounceCity(value, setWeather, city);
   };
 
   //get weather data
