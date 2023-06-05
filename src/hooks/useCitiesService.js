@@ -1,5 +1,5 @@
-export function useCitiesService(city, setWeather) {
-  const citiesService = async () => {
+export function useCitiesService() {
+  const citiesService = async (city, setWeather) => {
     const keyURL = "6bf11c60285b9b4e9ef3802f78058417";
     try {
       const res = await fetch(
@@ -10,7 +10,7 @@ export function useCitiesService(city, setWeather) {
     } catch (error) {
       console.log(error);
     }
-  };
 
-  citiesService();
+  };
+  return { citiesService };
 }

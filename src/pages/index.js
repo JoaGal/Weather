@@ -24,18 +24,22 @@ export default function Home() {
   });
   const router = useRouter();
   const { user, setUser } = useUserContext();
+  const { weatherService } = useWeatherService();
+  const { citiesService } = useCitiesService();
 
   //get cities
   const onQueryChange = (e) => {
     const { value } = e.target;
     if (city.current) clearTimeout(city.current);
     city.current = setTimeout(() => {
-      value.length > 2 && useCitiesService(value, setWeather);
+      value.length > 2 && citiesService(value, setWeather);
     }, 1000);
   };
 
   //get weather data
-  useWeatherService(cords, setWeather);
+  useEffect(() => {
+    cords !== "" && weatherService(cords, setWeather);
+  }, [cords]);
 
   // Hour and day
   useEffect(() => {

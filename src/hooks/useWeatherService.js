@@ -3,8 +3,8 @@ import { useEffect } from "react";
 const makeIconURL = (iconId) =>
   `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 
-export function useWeatherService(cords, setWeather) {
-  const weatherService = async () => {
+export function useWeatherService() {
+  const weatherService = async (cords, setWeather) => {
     const keyURL = "6bf11c60285b9b4e9ef3802f78058417";
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?${cords}&appid=${keyURL}&units=metric`;
@@ -35,8 +35,5 @@ export function useWeatherService(cords, setWeather) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    cords !== "" && weatherService(cords, setWeather);
-  }, [cords]);
+  return { weatherService };
 }
