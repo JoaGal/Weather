@@ -1,7 +1,7 @@
 const makeIconURL = (iconId) =>
   `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 
-export const weatherService = async (cords, setWeather) => {
+export const useWeatherService = async (cords, setWeather) => {
   const keyURL = "6bf11c60285b9b4e9ef3802f78058417"
   try {
     const URL = `https://api.openweathermap.org/data/2.5/weather?${cords}&appid=${keyURL}&units=metric`;

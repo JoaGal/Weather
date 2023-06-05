@@ -1,4 +1,4 @@
-export const citiesService = async (city, setWeather) => {
+export const useCitiesService = async (city, setWeather) => {
   const keyURL = "6bf11c60285b9b4e9ef3802f78058417"
   try {
       const res = await fetch(

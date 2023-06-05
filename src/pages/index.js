@@ -1,5 +1,5 @@
-import { weatherService } from "../hooks/weatherService";
-import { useEffect, useState } from "react";
+import { useWeatherService } from "../hooks/useWeatherService";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoIosAddCircle } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -11,10 +11,10 @@ import bg from "../assets/bg.jpg";
 import { loadedUser, logout, uploadCities } from "@/firebase/auth";
 import { useUserContext } from "@/context/context";
 import { useRouter } from "next/router";
-import { citiesService } from "@/hooks/citiesService";
+import useDebounceCity from "@/hooks/useDebounceCity";
 
 export default function Home() {
-  const [city, setCity] = useState("");
+  const city = useRef("");
   const [cords, setCords] = useState("");
   const [cordSave, setCordSave] = useState("");
   const [weather, setWeather] = useState([]);
@@ -26,17 +26,18 @@ export default function Home() {
   const { user, setUser } = useUserContext();
 
   //get cities
-  useEffect(() => {
-    city.length > 2 && citiesService(city, setWeather);
-  }, [city]);
+  const onQueryChange = (e) => {
+    const { value } = e.target;
+    useDebounceCity(value, setWeather, city);
+  };
 
   //get weather data
   useEffect(() => {
-    cords !== "" && weatherService(cords, setWeather);
+    cords !== "" && useWeatherService(cords, setWeather);
   }, [cords]);
 
-   // Hour and day
-   useEffect(() => {
+  // Hour and day
+  useEffect(() => {
     let today = new Date();
     let hoursReal = today.toLocaleTimeString("en-US");
     let days = today.toLocaleString("en-US", {
@@ -82,11 +83,12 @@ export default function Home() {
             <div>{hours.days}</div>
             <input
               type="text"
-              onChange={(e) => setCity(e.target.value)}
+              onChange={onQueryChange}
               name="city"
+              ref={city}
               placeholder="Enter City..."
             />
-            {weather.length > 1 && city.length > 2 && (
+            {weather.length > 1 && (
               <ListCities weather={weather} handleSelect={handleSelect} />
             )}
           </div>
@@ -132,15 +134,12 @@ export default function Home() {
           <div
             className="today"
             id="current-temp"
-            onClick={() => weatherService(cordSave, setWeather)}
+            onClick={() => useWeatherService(cordSave, setWeather)}
           >
             <GiModernCity className="icon__add" />
           </div>
         ) : (
-          <div
-            className="today"
-            id="current-temp"
-          >
+          <div className="today" id="current-temp">
             <IoIosAddCircle className="icon__add" />
           </div>
         )}
