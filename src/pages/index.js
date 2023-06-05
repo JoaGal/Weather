@@ -33,9 +33,6 @@ export default function Home() {
 
   //get weather data
   useWeatherService(cords, setWeather);
-  // useEffect(() => {
-  //   cords !== "" && weatherService(cords, setWeather);
-  // }, [cords]);
 
   // Hour and day
   useEffect(() => {
