@@ -26,18 +26,6 @@ export default function Home() {
   const { weather, setWeather } = useWeatherService(cords);
   const { onQueryChange } = useCitiesService(city, setWeather);
 
-  //get cities
-  // const onQueryChange = (e) => {
-  //   const { value } = e.target;
-  //   if (city.current) clearTimeout(city.current);
-  //   city.current = setTimeout(() => {
-  //     value.length > 2 && citiesService(value, setWeather);
-  //   }, 1000);
-  // };
-
-  //get weather data
-
-
   // Hour and day
   useEffect(() => {
     let today = new Date();
@@ -136,7 +124,7 @@ export default function Home() {
           <div
             className="today"
             id="current-temp"
-            onClick={() => useWeatherService(cordSave, setWeather)}
+            onClick={() => setCords(cordSave)}
           >
             <GiModernCity className="icon__add" />
           </div>
