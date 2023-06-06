@@ -1,4 +1,4 @@
-export function useCitiesService() {
+export function useCitiesService(city, setWeather) {
   const citiesService = async (city, setWeather) => {
     const keyURL = "6bf11c60285b9b4e9ef3802f78058417";
     try {
@@ -12,5 +12,14 @@ export function useCitiesService() {
     }
 
   };
-  return { citiesService };
+
+  const onQueryChange = (e) => {
+    const { value } = e.target;
+    if (city.current) clearTimeout(city.current);
+    city.current = setTimeout(() => {
+      value.length > 2 && citiesService(value, setWeather);
+    }, 1000);
+  };
+
+  return { onQueryChange };
 }

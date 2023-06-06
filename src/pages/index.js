@@ -17,26 +17,26 @@ export default function Home() {
   const city = useRef("");
   const [cords, setCords] = useState("");
   const [cordSave, setCordSave] = useState("");
-  const [weather, setWeather] = useState([]);
   const [hours, setHours] = useState({
     hoursReal: "",
     days: "",
   });
   const router = useRouter();
   const { user, setUser } = useUserContext();
-  const { citiesService } = useCitiesService();
+  const { weather, setWeather } = useWeatherService(cords);
+  const { onQueryChange } = useCitiesService(city, setWeather);
 
   //get cities
-  const onQueryChange = (e) => {
-    const { value } = e.target;
-    if (city.current) clearTimeout(city.current);
-    city.current = setTimeout(() => {
-      value.length > 2 && citiesService(value, setWeather);
-    }, 1000);
-  };
+  // const onQueryChange = (e) => {
+  //   const { value } = e.target;
+  //   if (city.current) clearTimeout(city.current);
+  //   city.current = setTimeout(() => {
+  //     value.length > 2 && citiesService(value, setWeather);
+  //   }, 1000);
+  // };
 
   //get weather data
-  useWeatherService()
+
 
   // Hour and day
   useEffect(() => {
